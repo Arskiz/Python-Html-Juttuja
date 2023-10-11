@@ -7,10 +7,10 @@ operators = []
 targetText = document.getElementById("currentMath")
 
 function updateCurrentMath(args) {
-    if(!mathText.endsWith("0") && args != "0"){
+
         mathText = mathText + args
         targetText.innerHTML = mathText
-    }
+    
     if(old != targetChar)
         old = old + args
     else
