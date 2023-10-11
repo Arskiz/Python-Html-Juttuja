@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+<div class="rounded" id="parentDiv">
+    <div class="rounded" id="innerDiv" style="flex-direction: column; margin: 10px; padding: 10px">
+
+        <div class="rounded" style="background-color: rgba(255, 255, 255, 0.2); border: 2px solid black; padding-left: 10px; padding-right: 10px; width: 90%">
+            <p id="currentMath" class="font">0</p>
+        </div>
+
+        <!--   first line  -->
+        <div style="display: flex; flex-direction:row">
+            <button class="calcButton white" style="padding-left: 19px; padding-right: 19px" onclick="clearCurrentMath()">
+                <p class="font blackColor">CE</p>
+            </button>
+            <button class="calcButton white">
+                <p class="font blackColor">C</p>
+            </button>
+            <button class="calcButton white" style="padding-left: 20px; padding-right:20px">
+                <p class="font blackColor">%</p>
+            </button>
+            <button class="calcButton orange" onclick="addOperator('÷')">
+                <p class="font">÷</p>
+            </button>
+        </div>
+
+        <!--   second line  -->
+        <div style="display: flex; flex-direction:row">
+            <button class="calcButton" onclick="updateCurrentMath('1')">
+                <p class="font">1</p>
+            </button>
+            <button class="calcButton" onclick="updateCurrentMath('2')">
+                <p class="font">2</p>
+            </button>
+            <button class="calcButton" onclick="updateCurrentMath('3')">
+                <p class="font">3</p>
+            </button>
+            <button class="calcButton orange" onclick="addOperator('x')">
+                <p class="font">X</p>
+            </button>
+        </div>
+        
+        <!--   third line  -->
+        <div style="display: flex; flex-direction:row">
+            <button class="calcButton"  onclick="updateCurrentMath('4')">
+                <p class="font">4</p>
+            </button>
+            <button class="calcButton"  onclick="updateCurrentMath('5')">
+                <p class="font">5</p>
+            </button>
+            <button class="calcButton"  onclick="updateCurrentMath('6')">
+                <p class="font">6</p>
+            </button>
+            <button class="calcButton orange" style="padding-left: 28px; padding-right: 28px" onclick="addOperator('-')">
+                <p class="font">-</p>
+            </button>
+        </div>
+
+        <!--   fourth line  -->
+        <div style="display: flex; flex-direction:row">
+            <button class="calcButton"  onclick="updateCurrentMath('7')">
+                <p class="font">7</p>
+            </button>
+            <button class="calcButton"  onclick="updateCurrentMath('8')">
+                <p class="font">8</p>
+            </button>
+            <button class="calcButton"  onclick="updateCurrentMath('9')">
+                <p class="font">9</p>
+            </button>
+            <button class="calcButton orange" onclick="addOperator('+')">
+                <p class="font">+</p>
+            </button>
+        </div>
+
+        <!--   fifth line  -->
+        <div style="display: flex; flex-direction:row">
+            <button class="calcButton" style="padding-right:100px"  onclick="updateCurrentMath('0')">
+                <p class="font">0</p>
+            </button>
+            <button class="calcButton" style="padding-left: 28px; padding-right: 28px">
+                <p class="font">.</p>
+            </button>
+            <button class="calcButton orange"  onclick="calculateEvent()">
+                <p class="font">=</p>
+            </button>
+        </div>
+
+    </div>
+</div>    
+</body>
+
+<script src="script.js"></script>
+</html>
