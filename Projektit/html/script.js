@@ -42,6 +42,12 @@ function clearCurrentMath() {
     operators.length = 0
 }
 
+function clearLastChar(){
+    teksti = usedValues[usedValues.length - 1]
+    teksti.slice(0, -1)
+    usedValues[usedValues.length - 1] = teksti
+}
+
 function calculateEvent(){
     
     calculation = 0
