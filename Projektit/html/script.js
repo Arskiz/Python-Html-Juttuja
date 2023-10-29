@@ -7,10 +7,10 @@ operators = []
 targetText = document.getElementById("currentMath")
 
 function updateCurrentMath(args) {
-    if(!mathText.endsWith("0") && args != "0"){
+
         mathText = mathText + args
         targetText.innerHTML = mathText
-    }
+    
     if(old != targetChar)
         old = old + args
     else
@@ -40,6 +40,12 @@ function clearCurrentMath() {
     targetText.innerHTML = "0"
     usedValues.length = 0
     operators.length = 0
+}
+
+function clearLastChar(){
+    teksti = usedValues[usedValues.length - 1]
+    teksti.slice(0, -1)
+    usedValues[usedValues.length - 1] = teksti
 }
 
 function calculateEvent(){
