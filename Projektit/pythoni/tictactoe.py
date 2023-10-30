@@ -1,6 +1,9 @@
 import os
 import time
 
+
+
+
 tictactoe = [[0,0,0], [0,0,0], [0,0,0]]
 
 
@@ -66,9 +69,21 @@ def charToMatrix(char):
         return 2
 
 def handleVictory():
-
-    #TODO
-    return False
+    x = "x"
+    o = "o"
+    # horizontal check
+    for i in range(0,2):
+        if(tictactoe[i][0] == x):
+            if(tictactoe[i][1] == x):
+                if(tictactoe[i][2] == x):
+                    return("X")
+                
+        elif(tictactoe[i][0] == o):
+            if(tictactoe[i][1] == o):
+                if(tictactoe[i][2] == 0):
+                    return("O")
+                
+    
             
 
     
@@ -103,8 +118,9 @@ def main():
             for i in currentTicTacToe:
                 print(i)
             print("-----------------------------")
-
-            #handleVictory()
+            winner = handleVictory()
+            if(winner == "X" or winner == "O"):
+                print("Winner is:", winner + "!!")
 
             time.sleep(0.1)
             print("Sijainti kirjoitetaan tässä muodossa: ESIM: [11x] <--> ensimmäinen kirjain tarkoittaa että ylhäältä alhaalle päin katsottuna ylin rivi, toinen kirjain tarkoittaa horizontaalissa muodossa olevaa 3 eri kohtaa joita voi täyttää. viimeinen eli vaihtoehdot x tai o ovat tyyppi sille että kuka suorittaa siirron, x vai o")
