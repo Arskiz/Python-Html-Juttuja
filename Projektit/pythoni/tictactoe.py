@@ -65,6 +65,12 @@ def charToMatrix(char):
     if char == "o":
         return 2
 
+def handleVictory():
+
+    #TODO
+    return False
+            
+
     
     
 def clearTerminal():
@@ -97,20 +103,22 @@ def main():
             for i in currentTicTacToe:
                 print(i)
             print("-----------------------------")
-                
+
+            #handleVictory()
+
             time.sleep(0.1)
             print("Sijainti kirjoitetaan tässä muodossa: ESIM: [11x] <--> ensimmäinen kirjain tarkoittaa että ylhäältä alhaalle päin katsottuna ylin rivi, toinen kirjain tarkoittaa horizontaalissa muodossa olevaa 3 eri kohtaa joita voi täyttää. viimeinen eli vaihtoehdot x tai o ovat tyyppi sille että kuka suorittaa siirron, x vai o")
             print("-----------------------------")
             turn = input("Kirjoita sijainti: ")
             
             if(len(turn) != 3):
-                print("Opettele Paska! Liian vähän kirjoitit ja ihan päin neekeriä!")
+                print("Opettele Paska! Liian vähän kirjoitit!")
                 time.sleep(0.4)
             else:
                 set_ticTacToe(turn)
-                
-                
+
             clearTerminal()
+
     except KeyboardInterrupt:
         clearTerminal()
         print("Interrupted by user!")

@@ -7,6 +7,7 @@ used_hints = 0
 last_hint_index = 99999
 words = ["ihminen", "rupikonna"]
 hints = ["Eläin, joka on hyvin älykäs. Alkaa i-kirjaimella ja loppuu n-kirjaimella.", "Eläin jossa on rupia´. Tykkää Vedestä"]
+index = 0
 
 def pick_word():
     global words
@@ -46,10 +47,13 @@ def main():
     global hints
     global score
     global words
+    global index
+    
     max_guesses = 6
     guesses = max_guesses
     if len(words) > 0:
         current_word = pick_word()
+        index = words.index(current_word)
         clear_terminal()
         print("Tervetuloa scramble word peliin! Tehtävänäsi on arvata sana joka on obfuskoitu!")
         time.sleep(0.5)
@@ -80,6 +84,7 @@ def main():
                 score += received_score
                 print("Pisteitä ansaittu:", str(received_score), "Pisteet:", str(score))
                 print("-------------------------------")
+                hints.remove(hints[index])
                 words.remove(current_word)
                 last_hint_index = 99999
                 time.sleep(1)
@@ -87,7 +92,7 @@ def main():
                 break
             
             if(guess == "vihje" or guess == "Vihje"):
-                index = words.index(current_word)
+                
                 used_hints +=1
                 last_hint_index = index
                 print("-------------------------------")
@@ -99,8 +104,9 @@ def main():
                 time.sleep(1)
                 
     except KeyboardInterrupt:
+        clear_terminal()
         print("Socket closed by user...")
-        time.sleep(0.7)
-        os.system('cls')
+        time.sleep(1)
+        clear_terminal()
                     
 main()
