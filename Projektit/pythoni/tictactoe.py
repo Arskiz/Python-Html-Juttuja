@@ -42,7 +42,7 @@ def set_ticTacToe(target): # Line goes from top to bottom so 0 -> 2
     else:
         clearTerminal()
         print("|-----------------------------------------|")
-        print("Väärä Syntaksi! Lue ohje sijainnin antoon!!")
+        print("Wrong syntax! Read help!")
         print("|-----------------------------------------|")
         time.sleep(1)
         
@@ -115,7 +115,7 @@ def main():
     global user
     clearTerminal()
     try:
-        print("Hei! Tervetuloa ristinollaan!")
+        print("Hey! Welcome to Tic Tac Toe!")
         time.sleep(1)
         global currentTicTacToe
         while True:
@@ -146,12 +146,12 @@ def main():
             
 
             time.sleep(0.1)
-            print("Sijainti kirjoitetaan tässä muodossa: ESIM: [11x] <--> ensimmäinen kirjain tarkoittaa että ylhäältä alhaalle päin katsottuna ylin rivi, toinen kirjain tarkoittaa horizontaalissa muodossa olevaa 3 eri kohtaa joita voi täyttää. viimeinen eli vaihtoehdot x tai o ovat tyyppi sille että kuka suorittaa siirron, x vai o")
+            print("The position is written in this form: ex: [11x] <--> the first letter means that the top line as seen from the top to the bottom, the second letter means that there are 3 different positions in the horizontal format that can be filled in. the last one i.e. the options x or o are the type for who performs the move, x or o.")
             print("-----------------------------")
-            turn = input(user + ", kirjoita sijainti: ")
+            turn = input(user + ", Write location: ")
             
             if(len(turn) != 3):
-                print("Opettele Paska! Liian vähän kirjoitit!")
+                print("You wrote it wrong. Too short or too long.")
                 time.sleep(0.4)
             else:
                 set_ticTacToe(turn)

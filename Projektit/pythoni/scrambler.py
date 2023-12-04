@@ -5,8 +5,8 @@ import os
 score = 0
 used_hints = 0
 last_hint_index = 99999
-words = ["ihminen", "rupikonna"]
-hints = ["Eläin, joka on hyvin älykäs. Alkaa i-kirjaimella ja loppuu n-kirjaimella.", "Eläin jossa on rupia´. Tykkää Vedestä"]
+words = ["human", "ice cream"]
+hints = ["Animal, that's very intelligent. Starts with 'h' and ends with 'n'.", "Cream, that's iced up."]
 index = 0
 
 def pick_word():
@@ -32,13 +32,13 @@ def game_over():
     
     global score
     global words
-    print("Hävisit pelin pisteillä", str(score) + "!")
+    print("You lost the game with points", str(score) + "!")
     print("-------------------------------")
     score = 0
     
 def game_win():
     global score
-    print("Voitit pelin pisteillä:", str(score) + "!")
+    print("You won the game with points:", str(score) + "!")
     print("-------------------------------")
 
 def main():
@@ -55,10 +55,10 @@ def main():
         current_word = pick_word()
         index = words.index(current_word)
         clear_terminal()
-        print("Tervetuloa scramble word peliin! Tehtävänäsi on arvata sana joka on obfuskoitu!")
+        print("Welcome to Scramble word game! Your task is to guess the obfuscated word!")
         time.sleep(0.5)
         print("-------------------------------")
-        print("Obfuskoitu sana on:", "[" + scramble_word(current_word) + "]")
+        print("Obfuscated word is:", "[" + scramble_word(current_word) + "]")
     else:
         game_win()
         quit()
@@ -66,23 +66,23 @@ def main():
         while True:
             print("-------------------------------")
             if(last_hint_index != words.index(current_word)):
-                print("Kirjoita 'vihje' saadaksesi vihjeen kyseiseen sanaan jos et tajua.")
-            guess = input("Arvauksesi: ")
+                print("Write 'hint' to get a hint.")
+            guess = input("Your guess: ")
             
-            if(guess != current_word and guess != "vihje"):
+            if(guess != current_word and guess != "hint"):
                 if(guesses > 0):
                     guesses -=1
                     print("-------------------------------")
-                    print("Väärä arvaus! Sinulla on", guesses, "yritystä arvata sana enää!")
+                    print("Wrong guess! You have", guesses, "guesses remaining!")
                 else:
                     game_over()
                 
             if(guess == current_word):
                 print("-------------------------------")
-                print("Oikein!!", "Sana oli", current_word + "!")
+                print("Correct!!", "The word was", current_word + "!")
                 received_score = int(1 * (len(current_word) * guesses))
                 score += received_score
-                print("Pisteitä ansaittu:", str(received_score), "Pisteet:", str(score))
+                print("Points gathered:", str(received_score), "Points:", str(score))
                 print("-------------------------------")
                 hints.remove(hints[index])
                 words.remove(current_word)
@@ -91,16 +91,16 @@ def main():
                 main()
                 break
             
-            if(guess == "vihje" or guess == "Vihje"):
+            if(guess == "hint" or guess == "Hint"):
                 
                 used_hints +=1
                 last_hint_index = index
                 print("-------------------------------")
-                print("Vihje:", hints[index])
-                print("Vihje DEBUG:", str(index), hints[index], words.index(current_word))
+                print("Hint:", hints[index])
+                print("Hint DEBUG:", str(index), hints[index], words.index(current_word))
             
-            if(len(guess) != len(current_word) and guess != "vihje" and guess != "Vihje"):
-                print("JA sinun täytyy arvata sanan mukaisen määrän kirjaimia!!! Ei yli eikä alle!!!")
+            if(len(guess) != len(current_word) and guess != "hint" and guess != "Hint"):
+                print("AND you must guess the amount of letters in the obfuscated word, not over or under!")
                 time.sleep(1)
                 
     except KeyboardInterrupt:
